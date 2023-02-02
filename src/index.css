@@ -386,6 +386,9 @@ p {
   .--flex-dir-column {
     flex-direction: column;
   }
+  .task-container {
+    margin-top: 8px !important;
+  }
 }
 
 .--block {
