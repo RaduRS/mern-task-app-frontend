@@ -16,6 +16,7 @@ const TaskForm = ({
         name="name"
         value={name}
         onChange={handleInputChange}
+        autoComplete="off"
       />
       <button id="searchQuerySubmit" type="submit">
         {isEditing ? "Update" : "Add"}
