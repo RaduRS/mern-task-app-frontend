@@ -157,7 +157,6 @@ p {
   line-height: 1.3;
   color: var(--color-dark);
   cursor: pointer;
-  line-height: 0px;
 }
 .--text-xl {
   font-size: 4.5rem;
