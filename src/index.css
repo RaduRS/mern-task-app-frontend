@@ -514,7 +514,7 @@ a:hover {
   outline: none;
   position: absolute;
   right: 0;
-  width: 15%;
+  width: 20%;
   height: 100%;
   font-size: 1.5rem;
   cursor: pointer;
@@ -564,7 +564,7 @@ a:hover {
   margin: 16px 0;
   /* animation: slide-in ease 0.5s; */
   border-radius: 8px;
-  box-shadow: 0px 0px 3px 2px rgba(0, 0, 0, 0.05);
+  box-shadow: rgb(0 0 0 / 25%) 0px 2px 4px 0px;
   background-color: #fff;
 }
 
