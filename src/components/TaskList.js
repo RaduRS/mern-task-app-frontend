@@ -13,7 +13,6 @@ const TaskList = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
   const [taskID, setTaskID] = useState("");
-  const [tasking, setTasking] = useState(tasks);
 
   const [formData, setFormData] = useState({
     name: "",
@@ -35,7 +34,9 @@ const TaskList = () => {
 
       setIsLoading(false);
     } catch (error) {
-      toast.error(error.message);
+      toast.error(error.message, {
+        position: "bottom-right",
+      });
       setIsLoading(false);
     }
   };
@@ -47,26 +48,37 @@ const TaskList = () => {
   const createTask = async (e) => {
     e.preventDefault();
     if (name === "") {
-      return toast.error("Input can't be empty");
+      return toast.error("Input can't be empty", {
+        position: "bottom-right",
+      });
     }
     try {
       await axios.post(`${URL}/api/tasks`, formData);
-      toast.success("Task added");
+      toast.success("Task added", {
+        position: "bottom-right",
+      });
       setFormData({ ...formData, name: "" });
       getTasks();
     } catch (error) {
-      toast.error(error.message);
+      toast.error(error.message, {
+        position: "bottom-right",
+      });
     }
   };
 
   const deleteTask = async (id) => {
     try {
       await axios.delete(`${URL}/api/tasks/${id}`);
-      toast.warning("Task deleted", { theme: "light" });
+      toast.warning("Task deleted", {
+        theme: "light",
+        position: "bottom-right",
+      });
 
       getTasks();
     } catch (error) {
-      toast.error(error.message);
+      toast.error(error.message, {
+        position: "bottom-right",
+      });
     }
   };
 
@@ -86,16 +98,22 @@ const TaskList = () => {
   const updateTask = async (e) => {
     e.preventDefault();
     if (name === " ") {
-      return toast.error("task field can't be empty");
+      return toast.error("task field can't be empty", {
+        position: "bottom-right",
+      });
     }
     try {
       await axios.put(`${URL}/api/tasks/${taskID}`, formData);
       setFormData({ ...formData, name: "" });
-      toast.info("Task Updated");
+      toast.info("Task Updated", {
+        position: "bottom-right",
+      });
       setIsEditing(false);
       getTasks();
     } catch (error) {
-      toast.error(error.message);
+      toast.error(error.message, {
+        position: "bottom-right",
+      });
     }
   };
 
@@ -105,7 +123,9 @@ const TaskList = () => {
       await axios.put(`${URL}/api/tasks/${task._id}`, newFormData);
       getTasks();
     } catch (error) {
-      toast.error(error.message);
+      toast.error(error.message, {
+        position: "bottom-right",
+      });
     }
   };
 
@@ -115,7 +135,9 @@ const TaskList = () => {
       await axios.put(`${URL}/api/tasks/${task._id}`, newFormData);
       getTasks();
     } catch (error) {
-      toast.error(error.message);
+      toast.error(error.message, {
+        position: "bottom-right",
+      });
     }
   };
 
@@ -136,9 +158,13 @@ const TaskList = () => {
           });
         })
       );
-      toast.success("Task order updated");
+      toast.success("Task order updated", {
+        position: "bottom-right",
+      });
     } catch (error) {
-      toast.error(error.message);
+      toast.error(error.message, {
+        position: "bottom-right",
+      });
     }
   };
 
