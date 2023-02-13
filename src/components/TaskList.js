@@ -119,11 +119,27 @@ const TaskList = () => {
     }
   };
 
-  const onDragEnd = (result) => {
+  const onDragEnd = async (result) => {
     const items = Array.from(tasks);
     const [reorderedItem] = items.splice(result.source.index, 1);
     items.splice(result.destination.index, 0, reorderedItem);
     setTasks(items);
+
+    // Update the order of the tasks on the server
+    try {
+      const updatedTasks = await Promise.all(
+        items.map((task, index) => {
+          return axios.put(`${URL}/api/tasks/${task._id}`, {
+            placeNumber: index + 1,
+            name: task.name,
+            completed: task.completed,
+          });
+        })
+      );
+      toast.success("Task order updated");
+    } catch (error) {
+      toast.error(error.message);
+    }
   };
 
   //.Return
